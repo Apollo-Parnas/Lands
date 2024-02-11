@@ -29,6 +29,9 @@ public class Connection implements Runnable{
             while(socket.isConnected()) {
                 try {
                     Object data = in.readObject();
+                    //if (data instanceof CardPlayPacket) {
+                        //idk yet
+                    //}
                 } catch(ClassNotFoundException e) {
                     e.printStackTrace();
                 }

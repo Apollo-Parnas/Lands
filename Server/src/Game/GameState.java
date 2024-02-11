@@ -74,9 +74,43 @@ public class GameState {
                 p1Board.add(card);
                 p1Hand.remove(card);
                 Card drawnCard = p1Deck.get(rand.nextInt(p1Deck.size()));
-                p1Hand.add(drawnCard);  
+                p1Hand.add(drawnCard);
                 p1Deck.remove(drawnCard);
                 break;
         }
     }
+    private boolean isWon() {
+        int numBlacks = 0;
+        int numBlues = 0;
+        int numGreens = 0;
+        int numReds = 0;
+        int numYellows = 0;
+
+        for (Card card : p1Board) {
+            switch(card.color) {
+                case BLACK:
+                    numBlacks++;
+                    break;
+
+                case BLUE:
+                    numBlues++;
+                    break;
+
+                case GREEN:
+                    numGreens++;
+                    break;
+
+                case RED:
+                    numReds++;
+                    break;
+
+                case YELLOW:
+                    numYellows++;
+                    break;
+
+            }
+        }
+        return ((numBlacks == 5 || numBlues == 5 || numGreens == 5 || numReds == 5 || numYellows == 5) || (numBlacks > 0 && numBlues > 0 && numGreens > 0 && numReds > 0 && numYellows > 0));
+    }
+
 }
