@@ -1,6 +1,7 @@
 package Game;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class GameState {
     int rounds;
@@ -12,6 +13,9 @@ public class GameState {
 
     ArrayList<Card> p1Discard;
     ArrayList<Card> p2Discard;
+
+    ArrayList<Card> p1Board;
+    ArrayList<Card> p2Board;
 
     public GameState() {
         this.p1Deck = new ArrayList<Card>();
@@ -37,21 +41,41 @@ public class GameState {
     }
 
     private void resolveCardEffect(Card card) {
+        Random rand = new Random();
         switch(card.color) {
             case BLACK:
-                //codestuffhere
+                //p1Board.add(card)
+                //p1Hand.remove(card)
+                //player 2 chooses 3 cards to show to player one
+                //player 1 see's the 3 cards and chooses one to discard
+                //p2Discard.add(chosenCard)
+                //p2Hand.remove(chosenCard)
                 break;
             case BLUE:
                 //codestuffhere
                 break;
             case GREEN:
-                //codestuffhere
+                //p1Board.add(card)
+                //p1Hand.remove(card)
+                //show player all the options in discard
+                //player chooses card they want
+                //drawnCard = chosenCard
+                //p1Hand.add(drawnCard)
+                //p1Discard.remove(drawnCard)
                 break;
             case RED:
-                //codestuffhere
+                //p1Board.add(card);
+                //p1Hand.remove(card);
+                //player 1 clicks a card from player 2's board
+                //p2Discard.add(chosenCard);
+                //p2Board.remove(chosenCard);
                 break;
             case YELLOW:
-                //codestuffhere
+                p1Board.add(card);
+                p1Hand.remove(card);
+                Card drawnCard = p1Deck.get(rand.nextInt(p1Deck.size()));
+                p1Hand.add(drawnCard);  
+                p1Deck.remove(drawnCard);
                 break;
         }
     }
